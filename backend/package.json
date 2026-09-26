@@ -1,0 +1,23 @@
+{
+  "name": "sia-backend",
+  "version": "0.0.1",
+  "description": "Smart Irrigation Advisor API",
+  "license": "MIT",
+  "author": "Jared Flores",
+  "type": "module",
+  "main": "./src/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.3",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "puppeteer": "^25.12.0"
+  }
+}
