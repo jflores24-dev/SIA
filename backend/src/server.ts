@@ -1,6 +1,6 @@
-import app from "./app";
+import app from "./app.js";
 
-import { startIrrigationReportScheduler } from "./reports/irrigation-report-scheduler";
+import { startIrrigationReportScheduler } from "./reports/irrigation-report-scheduler.js";
 
 const port = 3000;
 

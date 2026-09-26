@@ -1,6 +1,6 @@
 import cron from "node-cron";
 
-import { generateReport } from "./irrigation-report.service";
+import { generateReport } from "./irrigation-report.service.js";
 
 export function startIrrigationReportScheduler() {
   cron.schedule(
