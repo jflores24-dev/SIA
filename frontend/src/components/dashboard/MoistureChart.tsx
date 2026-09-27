@@ -8,17 +8,28 @@ import {
   YAxis,
 } from "recharts";
 
-const data = [
-  { day: "Lun", moisture: 42 },
-  { day: "Mar", moisture: 48 },
-  { day: "Mié", moisture: 55 },
-  { day: "Jue", moisture: 51 },
-  { day: "Vie", moisture: 63 },
-  { day: "Sáb", moisture: 58 },
-  { day: "Dom", moisture: 72 },
-];
+import type { Lecture } from "../../types/lecture";
 
-export default function MoistureChart() {
+interface MoistureChartProps {
+  lectures: Lecture[];
+}
+
+export default function MoistureChart({
+  lectures,
+}: MoistureChartProps) {
+  const data = lectures
+    .filter((lecture) => lecture.humedad !== null)
+    .map((lecture) => ({
+      date: new Date(lecture.fecha).toLocaleDateString(
+        "es-MX",
+        {
+          day: "2-digit",
+          month: "short",
+        },
+      ),
+      moisture: lecture.humedad,
+    }));
+
   return (
     <article className="rounded-2xl bg-white p-6 shadow-sm">
       <div className="mb-6">
@@ -32,7 +43,10 @@ export default function MoistureChart() {
       </div>
 
       <div className="h-[250px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+        >
           <AreaChart data={data}>
             <defs>
               <linearGradient
@@ -63,22 +77,31 @@ export default function MoistureChart() {
             />
 
             <XAxis
-              dataKey="day"
+              dataKey="date"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#94a3b8", fontSize: 12 }}
+              tick={{
+                fill: "#94a3b8",
+                fontSize: 12,
+              }}
             />
 
             <YAxis
               domain={[0, 100]}
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#94a3b8", fontSize: 12 }}
+              tick={{
+                fill: "#94a3b8",
+                fontSize: 12,
+              }}
               tickFormatter={(value) => `${value}%`}
             />
 
             <Tooltip
-              formatter={(value) => [`${value}%`, "Humedad"]}
+              formatter={(value) => [
+                `${value}%`,
+                "Humedad",
+              ]}
             />
 
             <Area
