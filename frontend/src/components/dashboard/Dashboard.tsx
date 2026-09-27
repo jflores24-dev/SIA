@@ -61,7 +61,7 @@ export default function Dashboard() {
   const alerts = generateAlerts(lectures);
 
   return (
-    <main className="min-h-screen bg-[#d8f0f5]">
+    <main className="min-h-screen bg-[#DFF1EC]">
       <div className="mx-auto max-w-[1400px] px-8 py-6">
         <DashboardHeader />
 
